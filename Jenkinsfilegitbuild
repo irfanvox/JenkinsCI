@@ -29,10 +29,10 @@ pipeline {
 
     post {
         success {
-            sh 'echo "Build Success"'
+            bat 'echo "Build Success"'
         }
         failure {
-            sh 'echo "Build Failure"'
+            bat 'echo "Build Failure"'
         }
     }
 }
