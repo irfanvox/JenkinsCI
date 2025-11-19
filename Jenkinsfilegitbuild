@@ -1,0 +1,25 @@
+pipeline{
+  agent any
+  stages{
+    stage("checkout code"){
+      steps{
+        git "https://github.com/irfanvox/JenkinsCI"
+      }
+    }
+    stage("Build a Docker image"){
+      steps{
+        sh 'echo "This is for Building the Docker image"'
+      }
+    }
+    stage("Test"){
+      steps{
+        sh 'echo "Running Tests"'
+      }
+    }
+    stage("Deploy"){
+      steps{
+        sh 'echo "Deploying"'
+      }
+    }
+  }
+}
