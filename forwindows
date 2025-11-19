@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("checkout code") {
+            steps {
+                git branch: 'main', url: "https://github.com/irfanvox/JenkinsCI"
+            }
+        }
+
+        stage("Build a Docker image") {
+            steps {
+                bat 'echo "This is for Building the Docker image"'
+            }
+        }
+
+        stage("Test") {
+            steps {
+                bat 'echo "Running Tests"'
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                bat 'echo "Deploying"'
+            }
+        }
+    }
+
+    post {
+        success {
+            bat 'echo "Build Success"'
+        }
+        failure {
+            bat 'echo "Build Failure"'
+        }
+    }
+}
