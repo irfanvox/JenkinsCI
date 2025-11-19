@@ -24,12 +24,11 @@ pipeline{
   }
 }
 
-    post {
-        success {
-            bat 'echo "Build Success"'
-        }
-        failure {
-            bat 'echo "Build Failure"'
-        }
-    }
+post{
+  success{
+    sh "echo 'Build Success'"
+  }
+  failure{
+    sh "echo 'Build Failed'"
+  }
 }
