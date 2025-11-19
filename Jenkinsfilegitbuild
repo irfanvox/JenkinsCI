@@ -1,34 +1,38 @@
-pipeline{
-  agent any
-  stages{
-    stage("checkout code"){
-      steps{
-        git branch: 'main', url: "https://github.com/irfanvox/JenkinsCI"
-      }
-    }
-    stage("Build a Docker image"){
-      steps{
-        sh 'echo "This is for Building the Docker image"'
-      }
-    }
-    stage("Test"){
-      steps{
-        sh 'echo "Running Tests"'
-      }
-    }
-    stage("Deploy"){
-      steps{
-        sh 'echo "Deploying"'
-      }
-    }
-  }
-}
+pipeline {
+    agent any
 
-post{
-  success{
-    sh "echo 'Build Success'"
-  }
-  failure{
-    sh "echo 'Build Failed'"
-  }
+    stages {
+        stage("checkout code") {
+            steps {
+                git branch: 'main', url: "https://github.com/irfanvox/JenkinsCI"
+            }
+        }
+
+        stage("Build a Docker image") {
+            steps {
+                sh 'echo "This is for Building the Docker image"'
+            }
+        }
+
+        stage("Test") {
+            steps {
+                sh 'echo "Running Tests"'
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                sh 'echo "Deploying"'
+            }
+        }
+    }
+
+    post {
+        success {
+            sh 'echo "Build Success"'
+        }
+        failure {
+            sh 'echo "Build Failure"'
+        }
+    }
 }
